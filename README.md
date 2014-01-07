@@ -186,7 +186,7 @@ user.
 #### Revealing a Square
 
 In order to reveal a square, the <code>reveal</code> or <code>r</code> command
-is used. The syntax format for this command is as follows: <code>-[reveal/r]-[(int)]-[(int)]-</code>.
+is used. The syntax format for this command is as follows: <code>-["reveal"/"r"]-[(int)]-[(int)]-</code>.
 The second and third tokens indicate the row and column indices, respectively, 
 of the square to be revealed. 
 
