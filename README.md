@@ -121,12 +121,49 @@ starts, the interface should look like this:
 minesweeper-alpha$ 
 ```
 
-Please note that the first and second-to-last lines are blank. All other lines, 
-except the last line containing the prompt, start with one blank space. The line
-containing the prompt contains an extra space after the <code>$</code> so that
-when the user types in a command, the text does not touch the <code>$</code>.
+Please note that the first, third, and second-to-last lines are blank. All other 
+lines, except the last line containing the prompt, start with one blank space. 
+The line containing the prompt contains an extra space after the <code>$</code> 
+so that when the user types in a command, the text does not touch the 
+<code>$</code>.
+
+The possible commands that can be entered into the prompt as well as their
+syntax are listed in the subsections below. Commands with leading or trailing
+white space are to be interpreted as if there were no leading or trailing
+whitespace. For example, the following two examples should be interpreted the
+same:
+
+```
+minesweeper-alpha$ help
+minesweeper-alpha$         help
+```
+
+The different parts of a command are known as tokens. The <code>help</code>
+command, for example, only has one token. Other commands, such as the
+<code>mark</code> (seen below) have more than one token because other
+pieces of information are needed in order to interpret the command. As a quick
+example (which will be explored in more depth below), the player can
+mark the square at coordinate (0,0) using <code>mark</coe> as follows:
+
+```
+minesweeper-alpha$ mark 0 0
+```
+
+In the above example, you can see that the <code>mark</code> command has three 
+tokens. A command with more than one token is still considered syntactically 
+correct if there is more than one white space between tokens. For example, the 
+following four examples should be interpreted the same:
+
+```
+minesweeper-alpha$ mark 0 0
+minesweeper-alpha$ mark     0  0
+minesweeper-alpha$     mark 0 0
+minesweeper-alpha$   mark     0  0
+```
 
 #### Revealing a Square
+
+
 
 #### Help Command
 
