@@ -169,7 +169,7 @@ considered an error. Information about displaying errors to the player is
 contained in a section below.
 
 In a syntax format string, one or more white space is represented as a
-<code>_</code>. Command tokens are enclosed in <code>[]</code> braces. If the
+<code>-</code>. Command tokens are enclosed in <code>[]</code> braces. If the
 contents of a token are surrounded by <code>""</code> marks, then that token can 
 only take on that literal value. If more than one literal value is accepted for
 a token, then the quoted literals are separated by <code>/</code>. If the
@@ -186,7 +186,7 @@ user.
 #### Revealing a Square
 
 In order to reveal a square, the <code>reveal</code> or <code>r</code> command
-is used. The syntax format for this command is as follows: <code>_[reveal/r]_[(int)]_[(int)]_</code>.
+is used. The syntax format for this command is as follows: <code>-[reveal/r]-[(int)]-[(int)]-</code>.
 The second and third tokens indicate the row and column indices, respectively, 
 of the square to be revealed. 
 
