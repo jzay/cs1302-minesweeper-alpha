@@ -242,6 +242,7 @@ If the player reveals a square containing a mine, then the following message
 should be displayed and the program should terminate gracefully:
 
 ```
+
  Oh no... You revealed a mine!
   __ _  __ _ _ __ ___   ___    _____   _____ _ __ 
  / _` |/ _` | '_ ` _ \ / _ \  / _ \ \ / / _ \ '__|
@@ -251,9 +252,31 @@ should be displayed and the program should terminate gracefully:
 
 ```
 
-Yeah, that's old school ASCII art. 
+Yeah, that's old school ASCII art. Please note that the first and last lines are
+blank. Also note that the second line begins with a single white space. All other
+lines should be copied verbatim from this document (e.g., you can just copy and
+paste it using your plain text editor).
+
+The program should exit gracefully. This means that exit code should be zero.
+For example, the following snippet will accomplish this:
+
+```java
+System.exit(0);
+```
+
+If your program exits with any return codes other than zero (e.g., if your game
+crashes), then some points will be deducted.
+
+#### Mark Command
+
+
+#### Guess Command
+
 
 #### Help Command
+
+
+#### Quit Command
 
 
 #### Displaying Errors
@@ -270,6 +293,133 @@ If the player types in <code>help</code>,
 
 ## Extra Credit Tasks
 
+You may earn up to 5 extra credit points for implementing the following command
+in addition to the five that are already required:
+
+#### No Fog Command
+
+You might find this extra credit command to be useful for debugging. 
+Essentially, this command removes, for the next round, what is often referred
+to as the "fog of war." Squares containing mines, whether unrevealed, marked,
+or guessed, will be displayed with less-than and greater-than symbols on
+either side of the square's center (as apposed to white spcace). Using the
+<code>nofog</code> command **does** use up a round.
+
+
+Let's go back to our 10*10 example. Suppose that we secretly know that there is
+a mine in squares (1,1) and (1,3). Now suppose the following scenario is
+enacted by the player: 
+
+ 1. Round 1: Player enters in the <code>nofog</code> command.
+ 2. Round 2: Player reveals square (1,2).
+ 3. Round 3: Player enters in the <code>nofog</code> command.
+ 4. Round 4: Player marks square (1,1).
+ 5. Round 5: Player enters in the <code>nofog</code> command.
+
+Here is an example of what that scenario might look like:
+
+```
+
+ Rounds Completed: 0
+
+ 0 |   |   |   |   |   |   |   |   |   |   |
+ 1 |   |   |   |   |   |   |   |   |   |   |
+ 2 |   |   |   |   |   |   |   |   |   |   |
+ 3 |   |   |   |   |   |   |   |   |   |   |
+ 4 |   |   |   |   |   |   |   |   |   |   |
+ 5 |   |   |   |   |   |   |   |   |   |   |
+ 6 |   |   |   |   |   |   |   |   |   |   |
+ 7 |   |   |   |   |   |   |   |   |   |   |
+ 8 |   |   |   |   |   |   |   |   |   |   |
+ 9 |   |   |   |   |   |   |   |   |   |   |
+     0   1   2   3   4   5   6   7   8   9
+
+minesweeper-alpha$ nofog
+
+ Rounds Completed: 1
+
+ 0 |   |   |   |   |   |   |   |   |   |   |
+ 1 |   |< >|   |< >|   |   |   |   |   |   |
+ 2 |   |   |   |   |   |   |   |   |   |   |
+ 3 |   |   |   |   |   |   |   |   |   |   |
+ 4 |   |   |   |   |   |   |   |   |   |   |
+ 5 |   |   |   |   |   |   |   |   |   |   |
+ 6 |   |   |   |   |   |   |   |   |   |   |
+ 7 |   |   |   |   |   |   |   |   |   |   |
+ 8 |   |   |   |   |   |   |   |   |   |   |
+ 9 |   |   |   |   |   |   |   |   |   |   |
+     0   1   2   3   4   5   6   7   8   9
+
+minesweeper-alpha$ r 1 2
+
+ Rounds Completed: 2
+
+ 0 |   |   |   |   |   |   |   |   |   |   |
+ 1 |   |   | 2 |   |   |   |   |   |   |   |
+ 2 |   |   |   |   |   |   |   |   |   |   |
+ 3 |   |   |   |   |   |   |   |   |   |   |
+ 4 |   |   |   |   |   |   |   |   |   |   |
+ 5 |   |   |   |   |   |   |   |   |   |   |
+ 6 |   |   |   |   |   |   |   |   |   |   |
+ 7 |   |   |   |   |   |   |   |   |   |   |
+ 8 |   |   |   |   |   |   |   |   |   |   |
+ 9 |   |   |   |   |   |   |   |   |   |   |
+     0   1   2   3   4   5   6   7   8   9
+
+minesweeper-alpha$ nofog
+
+ Rounds Completed: 3
+
+ 0 |   |   |   |   |   |   |   |   |   |   |
+ 1 |   |< >| 2 |< >|   |   |   |   |   |   |
+ 2 |   |   |   |   |   |   |   |   |   |   |
+ 3 |   |   |   |   |   |   |   |   |   |   |
+ 4 |   |   |   |   |   |   |   |   |   |   |
+ 5 |   |   |   |   |   |   |   |   |   |   |
+ 6 |   |   |   |   |   |   |   |   |   |   |
+ 7 |   |   |   |   |   |   |   |   |   |   |
+ 8 |   |   |   |   |   |   |   |   |   |   |
+ 9 |   |   |   |   |   |   |   |   |   |   |
+     0   1   2   3   4   5   6   7   8   9
+
+minesweeper-alpha$ m 1 1
+
+ Rounds Completed: 4
+
+ 0 |   |   |   |   |   |   |   |   |   |   |
+ 1 |   | F | 2 |   |   |   |   |   |   |   |
+ 2 |   |   |   |   |   |   |   |   |   |   |
+ 3 |   |   |   |   |   |   |   |   |   |   |
+ 4 |   |   |   |   |   |   |   |   |   |   |
+ 5 |   |   |   |   |   |   |   |   |   |   |
+ 6 |   |   |   |   |   |   |   |   |   |   |
+ 7 |   |   |   |   |   |   |   |   |   |   |
+ 8 |   |   |   |   |   |   |   |   |   |   |
+ 9 |   |   |   |   |   |   |   |   |   |   |
+     0   1   2   3   4   5   6   7   8   9
+
+minesweeper-alpha$ nofog
+
+ Rounds Completed: 5
+
+ 0 |   |   |   |   |   |   |   |   |   |   |
+ 1 |   |<F>| 2 |< >|   |   |   |   |   |   |
+ 2 |   |   |   |   |   |   |   |   |   |   |
+ 3 |   |   |   |   |   |   |   |   |   |   |
+ 4 |   |   |   |   |   |   |   |   |   |   |
+ 5 |   |   |   |   |   |   |   |   |   |   |
+ 6 |   |   |   |   |   |   |   |   |   |   |
+ 7 |   |   |   |   |   |   |   |   |   |   |
+ 8 |   |   |   |   |   |   |   |   |   |   |
+ 9 |   |   |   |   |   |   |   |   |   |   |
+     0   1   2   3   4   5   6   7   8   9
+
+minesweeper-alpha$ 
+```
+
+
+Note: This command should **not** be listed when the <code>help</code> command
+is used.
 
 ## Directory Structure and Packages
 
