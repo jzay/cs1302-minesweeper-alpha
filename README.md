@@ -36,7 +36,8 @@ classes in this project will also introduce you to some elementary aspects of
 game programming.
 
 This project must be implemented in Java 7, and it must compile and run 
-correctly, using SBT (more on SBT later) on Nike.
+correctly on Nike using instructions that you will provide in an
+<code>INSTRUCTIONS.md</code> file (more on that later).
 
 ### Minesweeper Overview
 
@@ -63,7 +64,8 @@ the revealed square contains a mine, then the player loses the game. If the
 revealed square does not contain a mine, then a digit is instead displayed in 
 the square, indicating how many adjacent squares contain mines (in the 
 recursive implementation, if no mines are adjacent, then the square becomes 
-blank). 
+blank). Typically, there are 8 squares adjacent to any given square, unless
+the square lies on an edge or corner of the grid.
 
 The player uses this information to deduce the contents of other squares, and 
 may perform any of the first three options in the list presented above. When the
@@ -166,7 +168,7 @@ minesweeper-alpha$   mark     0  0
 In the sections below, each command will the syntax format that it must adhere
 to in order to be considered correct. Syntactically incorrect commands are
 considered an error. Information about displaying errors to the player is
-contained in a section below.
+contained in a section below. 
 
 In a syntax format string, one or more white space is represented as a
 <code>-</code>. Command tokens are enclosed in <code>[]</code> braces. If the
@@ -181,7 +183,7 @@ student, understand how syntactically correct commands could potentially be
 inputted by the player. These strings do not directly correspond to anything in
 the Java programming language. You should be able to use the information
 provided in these syntax format strings to parse commands entered by the
-user.
+user. 
 
 #### Revealing a Square
 
@@ -190,6 +192,66 @@ is used. The syntax format for this command is as follows: <code>-["reveal"/"r"]
 The second and third tokens indicate the row and column indices, respectively, 
 of the square to be revealed. 
 
+Let's go back to our 10*10 example. Suppose that we secretly know that there is
+a mine in squares (1,1) and (1,3). Now suppose that the player wants to reveal
+square (1, 2). Here is an example of what that might look like.
+
+```
+
+ Rounds Completed: 0
+
+ 0 |   |   |   |   |   |   |   |   |   |   |
+ 1 |   |   |   |   |   |   |   |   |   |   |
+ 2 |   |   |   |   |   |   |   |   |   |   |
+ 3 |   |   |   |   |   |   |   |   |   |   |
+ 4 |   |   |   |   |   |   |   |   |   |   |
+ 5 |   |   |   |   |   |   |   |   |   |   |
+ 6 |   |   |   |   |   |   |   |   |   |   |
+ 7 |   |   |   |   |   |   |   |   |   |   |
+ 8 |   |   |   |   |   |   |   |   |   |   |
+ 9 |   |   |   |   |   |   |   |   |   |   |
+     0   1   2   3   4   5   6   7   8   9
+
+minesweeper-alpha$ r 1 2
+
+ Rounds Completed: 1
+
+ 0 |   |   |   |   |   |   |   |   |   |   |
+ 1 |   |   | 2 |   |   |   |   |   |   |   |
+ 2 |   |   |   |   |   |   |   |   |   |   |
+ 3 |   |   |   |   |   |   |   |   |   |   |
+ 4 |   |   |   |   |   |   |   |   |   |   |
+ 5 |   |   |   |   |   |   |   |   |   |   |
+ 6 |   |   |   |   |   |   |   |   |   |   |
+ 7 |   |   |   |   |   |   |   |   |   |   |
+ 8 |   |   |   |   |   |   |   |   |   |   |
+ 9 |   |   |   |   |   |   |   |   |   |   |
+     0   1   2   3   4   5   6   7   8   9
+
+minesweeper-alpha$ 
+
+```
+
+After the player correctly entered the command <code>r 1 2</code>, the state of
+the game updates (e.g., number of rounds completed, the grid, etc.), and the
+next round happens. Since there was no mine in square (1,2), the player does not
+lose the game. Also, since the number of mines adjacent to square (1,2) is 2, the
+number 2 is now placed in that cell.
+
+If the player reveals a square containing a mine, then the following message
+should be displayed and the program should terminate gracefully:
+
+```
+ Oh no... You revealed a mine!
+  __ _  __ _ _ __ ___   ___    _____   _____ _ __ 
+ / _` |/ _` | '_ ` _ \ / _ \  / _ \ \ / / _ \ '__|
+| (_| | (_| | | | | | |  __/ | (_) \ V /  __/ |   
+ \__, |\__,_|_| |_| |_|\___|  \___/ \_/ \___|_|   
+ |___/                                            
+
+```
+
+Yeah, that's old school ASCII art. 
 
 #### Help Command
 
