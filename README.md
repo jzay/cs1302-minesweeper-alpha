@@ -289,6 +289,72 @@ If the player types in <code>help</code>,
 
 ## Project Tasks
 
+The tasks for this project are mostly related to implementing methods inside of
+<code>Minesweeper.java</code>. There are some additional tasks, though, so
+please read the following list of tasks carefully:
+
+ * Implement or finish implementing the following methods in 
+   <code>Minesweeper.java</code>:
+
+   1. <code>draw()</code>
+   2. <code>update()</code>
+   3. <code>initRandom(int rows, int cols)</code>
+   4. <code>initFromSeedFile(File seedFile)</code>
+   5. <code>reveal(int row, int col)</code>
+   6. <code>mark(int row, int col)</code>
+   7. <code>guess(int row, int col)</code>
+   8. <code>getScore()</code>
+   9. <code>isInGrid(int row, int col)</code>
+   10. <code>countAdjMines(int row, int col)</code>
+   11. <code>isGameWon()</code>
+   12. <code>printHelp()</code>
+   13. <code>printWelcome()</code>
+   14. <code>printGameWon()</code>
+   15. <code>printGameOver()</code>
+   16. <code>printError(String message)</code>
+   17. <code>run()</code>
+   18. <code>isRunning()</code>
+
+   Be sure to include in-line Java comments and whitespace where appropriate in
+   order to make your code both readable and clear.
+
+ * Update the @author tag in the JavaDoc comment for the 
+   <code>Minesweeper</code> class in <code>Minesweeper.java</code> to include 
+   your name and UGA email address.
+
+ * Update the <code>INSTRUCTIONS.md</code> file to include instructions on how
+   to both compile and run your program, assuming one is in the same directory
+   as <code>Minesweeper.java</code>. Instructions for running your program
+   should be consistent with the documentation provided to you in the
+   <code>main</code> method in <code>Minesweeper.java</code>.
+
+NOTE: You may wish to implement methods in a different order than what is listed
+above. That is okay. Just make sure that they work.
+
+## Project Grading
+
+Your project will be graded based on a combination of test cases and source code
+inspection. If your program does not compile on Nike, then it will **not** be 
+graded. If your program crashes (throws an exception and or exits unexpectedly),
+then no points are earned for that test case, even if there is partial output.
+
+Assuming your program can be run consistent with the documentation provided to 
+you in the <code>main</code> method in <code>Minesweeper.java</code>, you can 
+use the provided <code>test.sh</code> file run a subset of the test cases. To
+run the test cases, you first need to make sure that <code>test.sh</code> can
+be executed by your user. To do this, make sure you are in the same directory as
+<code>test.sh</code> and execute the following terminal command:
+
+```
+$ chmod +x test.sh
+```
+
+Now, to run a subset of the test cases, you may execute the following terminal
+command while in the same directory as <code>test.sh</code>:
+
+```
+$ ./test.sh
+```
 
 ## Extra Credit Tasks
 
@@ -298,111 +364,22 @@ in addition to the five that are already required:
 #### No Fog Command
 
 You might find this extra credit command to be useful for debugging. 
-Essentially, this command removes, for the next round, what is often referred
-to as the "fog of war." Squares containing mines, whether unrevealed, marked,
-or guessed, will be displayed with less-than and greater-than symbols on
+Essentially, this command removes, for the next round only, what is often
+referred to as the "fog of war." Squares containing mines, whether unrevealed, 
+marked, or guessed, will be displayed with less-than and greater-than symbols on
 either side of the square's center (as apposed to white spcace). Using the
 <code>nofog</code> command **does** use up a round.
 
-
 Let's go back to our 10*10 example. Suppose that we secretly know that there is
-a mine in squares (1,1) and (1,3). Now suppose the following scenario is
-enacted by the player: 
-
- 1. Round 1: Player enters in the <code>nofog</code> command.
- 2. Round 2: Player reveals square (1,2).
- 3. Round 3: Player enters in the <code>nofog</code> command.
- 4. Round 4: Player marks square (1,1).
- 5. Round 5: Player enters in the <code>nofog</code> command.
-
-Here is an example of what that scenario might look like:
-
+a mine in squares (1,1) and (1,3). If the player marked square (1,1) durring the
+first round and then used the <code>nofog</code> command durring the second
+round, then here is an example of what that scenario might look like:
 ```
-
- Rounds Completed: 0
-
- 0 |   |   |   |   |   |   |   |   |   |   |
- 1 |   |   |   |   |   |   |   |   |   |   |
- 2 |   |   |   |   |   |   |   |   |   |   |
- 3 |   |   |   |   |   |   |   |   |   |   |
- 4 |   |   |   |   |   |   |   |   |   |   |
- 5 |   |   |   |   |   |   |   |   |   |   |
- 6 |   |   |   |   |   |   |   |   |   |   |
- 7 |   |   |   |   |   |   |   |   |   |   |
- 8 |   |   |   |   |   |   |   |   |   |   |
- 9 |   |   |   |   |   |   |   |   |   |   |
-     0   1   2   3   4   5   6   7   8   9
-
-minesweeper-alpha$ nofog
-
- Rounds Completed: 1
-
- 0 |   |   |   |   |   |   |   |   |   |   |
- 1 |   |< >|   |< >|   |   |   |   |   |   |
- 2 |   |   |   |   |   |   |   |   |   |   |
- 3 |   |   |   |   |   |   |   |   |   |   |
- 4 |   |   |   |   |   |   |   |   |   |   |
- 5 |   |   |   |   |   |   |   |   |   |   |
- 6 |   |   |   |   |   |   |   |   |   |   |
- 7 |   |   |   |   |   |   |   |   |   |   |
- 8 |   |   |   |   |   |   |   |   |   |   |
- 9 |   |   |   |   |   |   |   |   |   |   |
-     0   1   2   3   4   5   6   7   8   9
-
-minesweeper-alpha$ r 1 2
 
  Rounds Completed: 2
 
  0 |   |   |   |   |   |   |   |   |   |   |
- 1 |   |   | 2 |   |   |   |   |   |   |   |
- 2 |   |   |   |   |   |   |   |   |   |   |
- 3 |   |   |   |   |   |   |   |   |   |   |
- 4 |   |   |   |   |   |   |   |   |   |   |
- 5 |   |   |   |   |   |   |   |   |   |   |
- 6 |   |   |   |   |   |   |   |   |   |   |
- 7 |   |   |   |   |   |   |   |   |   |   |
- 8 |   |   |   |   |   |   |   |   |   |   |
- 9 |   |   |   |   |   |   |   |   |   |   |
-     0   1   2   3   4   5   6   7   8   9
-
-minesweeper-alpha$ nofog
-
- Rounds Completed: 3
-
- 0 |   |   |   |   |   |   |   |   |   |   |
- 1 |   |< >| 2 |< >|   |   |   |   |   |   |
- 2 |   |   |   |   |   |   |   |   |   |   |
- 3 |   |   |   |   |   |   |   |   |   |   |
- 4 |   |   |   |   |   |   |   |   |   |   |
- 5 |   |   |   |   |   |   |   |   |   |   |
- 6 |   |   |   |   |   |   |   |   |   |   |
- 7 |   |   |   |   |   |   |   |   |   |   |
- 8 |   |   |   |   |   |   |   |   |   |   |
- 9 |   |   |   |   |   |   |   |   |   |   |
-     0   1   2   3   4   5   6   7   8   9
-
-minesweeper-alpha$ m 1 1
-
- Rounds Completed: 4
-
- 0 |   |   |   |   |   |   |   |   |   |   |
- 1 |   | F | 2 |   |   |   |   |   |   |   |
- 2 |   |   |   |   |   |   |   |   |   |   |
- 3 |   |   |   |   |   |   |   |   |   |   |
- 4 |   |   |   |   |   |   |   |   |   |   |
- 5 |   |   |   |   |   |   |   |   |   |   |
- 6 |   |   |   |   |   |   |   |   |   |   |
- 7 |   |   |   |   |   |   |   |   |   |   |
- 8 |   |   |   |   |   |   |   |   |   |   |
- 9 |   |   |   |   |   |   |   |   |   |   |
-     0   1   2   3   4   5   6   7   8   9
-
-minesweeper-alpha$ nofog
-
- Rounds Completed: 5
-
- 0 |   |   |   |   |   |   |   |   |   |   |
- 1 |   |<F>| 2 |< >|   |   |   |   |   |   |
+ 1 |   |<F>|   |< >|   |   |   |   |   |   |
  2 |   |   |   |   |   |   |   |   |   |   |
  3 |   |   |   |   |   |   |   |   |   |   |
  4 |   |   |   |   |   |   |   |   |   |   |
@@ -416,9 +393,10 @@ minesweeper-alpha$ nofog
 minesweeper-alpha$ 
 ```
 
-
 Note: This command should **not** be listed when the <code>help</code> command
-is used.
+is used. Also, it should be implemented in a similar fashion to the way the
+other commands are implemented. You will need to add extra methods and
+instance variables to accomplish this.
 
 ## Directory Structure and Packages
 
