@@ -597,6 +597,13 @@ A seed file is also considered to be malformatted if the grid size is not an
 acceptable grid size, if the number of mines exceeds the number of squares in
 the grid, and if a mine location is specified as being outside of the grid.
 
+An example seedfile is present in the project materials. In order to run
+your program with the seed file, you should be able to use the following
+command:
+
+```
+$ java Minesweeper seed1.txt
+```
 
 ## Project Tasks
 
@@ -635,7 +642,7 @@ $ java Minesweeper seed1.txt < test1.txt > test1.result.txt
 ```
 
 This command tells the program to create a game using the <code>seed1.txt</code>
-seed file, execute the commands contained in the <code>test1.txt<code> test case 
+seed file, execute the commands contained in the <code>test1.txt</code> test case 
 file, and output the results into the <code>test1.result.txt</code> file. Once
 you have your result file, you can compare it to <code>test1.expected.txt</code>.
 
