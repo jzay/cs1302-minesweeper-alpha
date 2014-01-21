@@ -93,6 +93,21 @@ The higher the score, the better. Negative scores are possible.
 
 ### The Grid and Interface
 
+When the game begins, the following message should be displayed to the player
+once and only once:
+
+``
+        _
+  /\/\ (_)_ __   ___  _____      _____  ___ _ __   ___ _ __
+ /    \| | '_ \ / _ \/ __\ \ /\ / / _ \/ _ \ '_ \ / _ \ '__|
+/ /\/\ \ | | | |  __/\__ \\ V  V /  __/  __/ |_) |  __/ |
+\/    \/_|_| |_|\___||___/ \_/\_/ \___|\___| .__/ \___|_|
+                                     ALPHA |_| EDITION
+``
+
+Take care when printing this message out to the screen. You will probably need
+to escape some of the characters in order for them to show up correctly.
+
 In this Minesweeper game, the size of the grid is restricted to no more than 10
 rows and 10 columns. The number of rows and columns need not be the same. To be
 more precise, the number of rows must be strictly greater than 0 and less than
@@ -268,23 +283,319 @@ crashes), then some points will be deducted.
 
 #### Mark Command
 
+In order to mark a square as definitely containing a mine, the 
+<code>mark</code> or <code>m</code> command is used. The syntax format for this 
+command is as follows: <code>-["mark"/"m"]-[(int)]-[(int)]-</code>.
+The second and third tokens indicate the row and column indices, respectively, 
+of the square to be revealed. 
+
+Let's go back to our 10*10 example. Suppose that the player wants to mark
+square (1, 2). Here is an example of what that might look like.
+
+```
+
+ Rounds Completed: 0
+
+ 0 |   |   |   |   |   |   |   |   |   |   |
+ 1 |   |   |   |   |   |   |   |   |   |   |
+ 2 |   |   |   |   |   |   |   |   |   |   |
+ 3 |   |   |   |   |   |   |   |   |   |   |
+ 4 |   |   |   |   |   |   |   |   |   |   |
+ 5 |   |   |   |   |   |   |   |   |   |   |
+ 6 |   |   |   |   |   |   |   |   |   |   |
+ 7 |   |   |   |   |   |   |   |   |   |   |
+ 8 |   |   |   |   |   |   |   |   |   |   |
+ 9 |   |   |   |   |   |   |   |   |   |   |
+     0   1   2   3   4   5   6   7   8   9
+
+minesweeper-alpha$ m 1 2
+
+ Rounds Completed: 1
+
+ 0 |   |   |   |   |   |   |   |   |   |   |
+ 1 |   |   | F |   |   |   |   |   |   |   |
+ 2 |   |   |   |   |   |   |   |   |   |   |
+ 3 |   |   |   |   |   |   |   |   |   |   |
+ 4 |   |   |   |   |   |   |   |   |   |   |
+ 5 |   |   |   |   |   |   |   |   |   |   |
+ 6 |   |   |   |   |   |   |   |   |   |   |
+ 7 |   |   |   |   |   |   |   |   |   |   |
+ 8 |   |   |   |   |   |   |   |   |   |   |
+ 9 |   |   |   |   |   |   |   |   |   |   |
+     0   1   2   3   4   5   6   7   8   9
+
+minesweeper-alpha$ 
+```
+
+After the player correctly entered the command <code>m 1 2</code>, the state of
+the game updates (e.g., number of rounds completed, the grid, etc.), and the
+next round happens. 
 
 #### Guess Command
 
+In order to mark a square as potentially containing a mine, the 
+<code>guess</code> or <code>g</code> command is used. The syntax format for this 
+command is as follows: <code>-["guess"/"g"]-[(int)]-[(int)]-</code>.
+The second and third tokens indicate the row and column indices, respectively, 
+of the square to be revealed. 
+
+Let's go back to our 10*10 example. Suppose that the player wants to guess
+square (1, 2). Here is an example of what that might look like.
+
+```
+
+ Rounds Completed: 0
+
+ 0 |   |   |   |   |   |   |   |   |   |   |
+ 1 |   |   |   |   |   |   |   |   |   |   |
+ 2 |   |   |   |   |   |   |   |   |   |   |
+ 3 |   |   |   |   |   |   |   |   |   |   |
+ 4 |   |   |   |   |   |   |   |   |   |   |
+ 5 |   |   |   |   |   |   |   |   |   |   |
+ 6 |   |   |   |   |   |   |   |   |   |   |
+ 7 |   |   |   |   |   |   |   |   |   |   |
+ 8 |   |   |   |   |   |   |   |   |   |   |
+ 9 |   |   |   |   |   |   |   |   |   |   |
+     0   1   2   3   4   5   6   7   8   9
+
+minesweeper-alpha$ g 1 2
+
+ Rounds Completed: 1
+
+ 0 |   |   |   |   |   |   |   |   |   |   |
+ 1 |   |   | ? |   |   |   |   |   |   |   |
+ 2 |   |   |   |   |   |   |   |   |   |   |
+ 3 |   |   |   |   |   |   |   |   |   |   |
+ 4 |   |   |   |   |   |   |   |   |   |   |
+ 5 |   |   |   |   |   |   |   |   |   |   |
+ 6 |   |   |   |   |   |   |   |   |   |   |
+ 7 |   |   |   |   |   |   |   |   |   |   |
+ 8 |   |   |   |   |   |   |   |   |   |   |
+ 9 |   |   |   |   |   |   |   |   |   |   |
+     0   1   2   3   4   5   6   7   8   9
+
+minesweeper-alpha$ 
+```
+
+After the player correctly entered the command <code>g 1 2</code>, the state of
+the game updates (e.g., number of rounds completed, the grid, etc.), and the
+next round happens.
 
 #### Help Command
 
+In order to show the help menu, the <code>help</code> or <code>h</code> command
+is used. The syntax format for this command is as follows: <code>-["help"/"h"]-</code>.
+
+Let's go back to our 10*10 example. Suppose that the player wants to display
+the help menu. Here is an example of what that might look like.
+
+```
+
+ Rounds Completed: 0
+
+ 0 |   |   |   |   |   |   |   |   |   |   |
+ 1 |   |   |   |   |   |   |   |   |   |   |
+ 2 |   |   |   |   |   |   |   |   |   |   |
+ 3 |   |   |   |   |   |   |   |   |   |   |
+ 4 |   |   |   |   |   |   |   |   |   |   |
+ 5 |   |   |   |   |   |   |   |   |   |   |
+ 6 |   |   |   |   |   |   |   |   |   |   |
+ 7 |   |   |   |   |   |   |   |   |   |   |
+ 8 |   |   |   |   |   |   |   |   |   |   |
+ 9 |   |   |   |   |   |   |   |   |   |   |
+     0   1   2   3   4   5   6   7   8   9
+
+minesweeper-alpha$ h
+
+Commands Available...
+ - Reveal: r/reveal row col
+ -   Mark: m/mark   row col
+ -  Guess: g/guess  row col
+ -   Help: h/help
+ -   Quit: q/quit
+
+ Rounds Completed: 1
+
+ 0 |   |   |   |   |   |   |   |   |   |   |
+ 1 |   |   |   |   |   |   |   |   |   |   |
+ 2 |   |   |   |   |   |   |   |   |   |   |
+ 3 |   |   |   |   |   |   |   |   |   |   |
+ 4 |   |   |   |   |   |   |   |   |   |   |
+ 5 |   |   |   |   |   |   |   |   |   |   |
+ 6 |   |   |   |   |   |   |   |   |   |   |
+ 7 |   |   |   |   |   |   |   |   |   |   |
+ 8 |   |   |   |   |   |   |   |   |   |   |
+ 9 |   |   |   |   |   |   |   |   |   |   |
+     0   1   2   3   4   5   6   7   8   9
+
+minesweeper-alpha$ 
+```
+
+After the player correctly entered the command <code>h</code>, the state of
+the game updates (e.g., number of rounds completed, the grid, etc.), the
+help menu is displated, and the next round happens. 
 
 #### Quit Command
 
+In order to quit the game, the <code>quit</code> or <code>q</code> command
+is used. The syntax format for this command is as follows: <code>-["quit"/"q"]-</code>.
+
+Let's go back to our 10*10 example. Suppose that the player wants to quit the
+game. Here is an example of what that might look like.
+
+```
+
+ Rounds Completed: 0
+
+ 0 |   |   |   |   |   |   |   |   |   |   |
+ 1 |   |   |   |   |   |   |   |   |   |   |
+ 2 |   |   |   |   |   |   |   |   |   |   |
+ 3 |   |   |   |   |   |   |   |   |   |   |
+ 4 |   |   |   |   |   |   |   |   |   |   |
+ 5 |   |   |   |   |   |   |   |   |   |   |
+ 6 |   |   |   |   |   |   |   |   |   |   |
+ 7 |   |   |   |   |   |   |   |   |   |   |
+ 8 |   |   |   |   |   |   |   |   |   |   |
+ 9 |   |   |   |   |   |   |   |   |   |   |
+     0   1   2   3   4   5   6   7   8   9
+
+minesweeper-alpha$ q
+
+ლ(ಠ_ಠლ)
+Y U NO PLAY MORE?
+Bye!
+
+```
+
+After the player correctly entered the command <code>q</code>, the game
+displayed the goodbye message and the program exitted gracefully.
+
+
+#### Player Wins
+
+When the player wins the game, the following message should be displayed
+to the player and the game shold exit gracefully:
+
+```
+
+ ░░░░░░░░░▄░░░░░░░░░░░░░░▄░░░░ "So Doge"
+ ░░░░░░░░▌▒█░░░░░░░░░░░▄▀▒▌░░░
+ ░░░░░░░░▌▒▒█░░░░░░░░▄▀▒▒▒▐░░░ "Such Score"
+ ░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐░░░
+ ░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐░░░ "Much Minesweeping"
+ ░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌░░░
+ ░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒▌░░ "Wow"
+ ░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐░░
+ ░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄▌░
+ ░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▌░
+ ▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒▐░
+ ▐▒▒▐▀▐▀▒░▄▄▒▄▒▒▒▒▒▒░▒░▒░▒▒▒▒▌
+ ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒▒▒░▒░▒░▒▒▐░
+ ░▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒░▒░▒░▒░▒▒▒▌░
+ ░▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▒▄▒▒▐░░
+ ░░▀▄▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▄▒▒▒▒▌░░
+ ░░░░▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀░░░ CONGRATULATIONS!
+ ░░░░░░▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀░░░░░ YOU HAVE WON!
+ ░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▀▀░░░░░░░░ SCORE: 15
+
+
+```
+
+Note that the first and last lines are blank and that the beginning of the
+other lines contain a single whitespace. You should replace the score in the
+output with the actual calculated score (mentioned above).
 
 #### Displaying Errors
 
-If the player types in <code>help</code>, 
+If a command is not recognized, then the following message should be displayed 
+to the player and one round should be consumed:
+
+```
+
+ಠ_ಠ says, "Command not recognized!"
+```
+
+Note that the first line is blank. 
+
+Let's go back to our 10*10 example. Suppose that the player either leaves the
+prompt blank or enters in some command that is not recognized.
+Here is an example of what that might look like.
+
+```
+
+ Rounds Completed: 0
+
+ 0 |   |   |   |   |   |   |   |   |   |   |
+ 1 |   |   |   |   |   |   |   |   |   |   |
+ 2 |   |   |   |   |   |   |   |   |   |   |
+ 3 |   |   |   |   |   |   |   |   |   |   |
+ 4 |   |   |   |   |   |   |   |   |   |   |
+ 5 |   |   |   |   |   |   |   |   |   |   |
+ 6 |   |   |   |   |   |   |   |   |   |   |
+ 7 |   |   |   |   |   |   |   |   |   |   |
+ 8 |   |   |   |   |   |   |   |   |   |   |
+ 9 |   |   |   |   |   |   |   |   |   |   |
+     0   1   2   3   4   5   6   7   8   9
+
+minesweeper-alpha$ meh
+
+ಠ_ಠ says, "Command not recognized!"
+
+ Rounds Completed: 1
+
+ 0 |   |   |   |   |   |   |   |   |   |   |
+ 1 |   |   |   |   |   |   |   |   |   |   |
+ 2 |   |   |   |   |   |   |   |   |   |   |
+ 3 |   |   |   |   |   |   |   |   |   |   |
+ 4 |   |   |   |   |   |   |   |   |   |   |
+ 5 |   |   |   |   |   |   |   |   |   |   |
+ 6 |   |   |   |   |   |   |   |   |   |   |
+ 7 |   |   |   |   |   |   |   |   |   |   |
+ 8 |   |   |   |   |   |   |   |   |   |   |
+ 9 |   |   |   |   |   |   |   |   |   |   |
+     0   1   2   3   4   5   6   7   8   9
+
+minesweeper-alpha$ 
+```
+
+After the player entered the unknown command <code>meh</code>, the state of
+the game updates (e.g., number of rounds completed, the grid, etc.), the
+error message is displated, and the next round happens. 
 
 ### Seed Files
 
+This game can also be setup using seed files. Seed files have the following
+format:
 
+ * The first line contains two integers (separated by whitespace) indicating the 
+   number of <code>rows</code> and <code>cols</code>, respectively, for the size 
+   of the mine board. 
+
+ * The second line contains an integer indicating the number of mines to be 
+   placed on the mine board.
+
+ * Subsequent lines contain pairs of integers (separated by whitespace) 
+   indicating the location of each mine.
+
+If the number on line 2 is 5 then there should be 7 lines total in the file.
+That is, one line for the board size, one line for the number of mines, and 5
+lines indicating mine positions. If there are more lines in the file than what
+is expected, then those lines are to be ignored.
+
+If a seed file is not formatted correctly, then then the program should exit
+and the following message should be displayed:
+
+```
+Cannot create game with FILENAME, because it is not formatted correctly.
+
+```
+
+Note that the second line is empty. Also, be sure to replace FILENAME with 
+the actual name of the file.
+
+A seed file is also considered to be malformatted if the grid size is not an
+acceptable grid size, if the number of mines exceeds the number of squares in
+the grid, and if a mine location is specified as being outside of the grid.
 
 
 ## Project Tasks
@@ -293,30 +604,10 @@ The tasks for this project are mostly related to implementing methods inside of
 <code>Minesweeper.java</code>. There are some additional tasks, though, so
 please read the following list of tasks carefully:
 
- * Implement or finish implementing the following methods in 
-   <code>Minesweeper.java</code>:
-
-   1. <code>draw()</code>
-   2. <code>update()</code>
-   3. <code>initRandom(int rows, int cols)</code>
-   4. <code>initFromSeedFile(File seedFile)</code>
-   5. <code>reveal(int row, int col)</code>
-   6. <code>mark(int row, int col)</code>
-   7. <code>guess(int row, int col)</code>
-   8. <code>getScore()</code>
-   9. <code>isInGrid(int row, int col)</code>
-   10. <code>countAdjMines(int row, int col)</code>
-   11. <code>isGameWon()</code>
-   12. <code>printHelp()</code>
-   13. <code>printWelcome()</code>
-   14. <code>printGameWon()</code>
-   15. <code>printGameOver()</code>
-   16. <code>printError(String message)</code>
-   17. <code>run()</code>
-   18. <code>isRunning()</code>
-
-   Be sure to include in-line Java comments and whitespace where appropriate in
-   order to make your code both readable and clear.
+ * Implement or finish implementing the methods in <code>Minesweeper.java</code>
+   as per the project description provided above. Be sure to include in-line 
+   Java comments and whitespace where appropriate in order to make your code 
+   both readable and clear.
 
  * Update the @author tag in the JavaDoc comment for the 
    <code>Minesweeper</code> class in <code>Minesweeper.java</code> to include 
@@ -328,9 +619,6 @@ please read the following list of tasks carefully:
    should be consistent with the documentation provided to you in the
    <code>main</code> method in <code>Minesweeper.java</code>.
 
-NOTE: You may wish to implement methods in a different order than what is listed
-above. That is okay. Just make sure that they work.
-
 ## Project Grading
 
 Your project will be graded based on a combination of test cases and source code
@@ -339,22 +627,17 @@ graded. If your program crashes (throws an exception and or exits unexpectedly),
 then no points are earned for that test case, even if there is partial output.
 
 Assuming your program can be run consistent with the documentation provided to 
-you in the <code>main</code> method in <code>Minesweeper.java</code>, you can 
-use the provided <code>test.sh</code> file run a subset of the test cases. To
-run the test cases, you first need to make sure that <code>test.sh</code> can
-be executed by your user. To do this, make sure you are in the same directory as
-<code>test.sh</code> and execute the following terminal command:
+you in the <code>main</code> method in <code>Minesweeper.java</code>, you can use
+the following command to execute the first test case:
 
 ```
-$ chmod +x test.sh
+$ java Minesweeper seed1.txt < test1.txt > test1.result.txt
 ```
 
-Now, to run a subset of the test cases, you may execute the following terminal
-command while in the same directory as <code>test.sh</code>:
-
-```
-$ ./test.sh
-```
+This command tells the program to create a game using the <code>seed1.txt</code>
+seed file, execute the commands contained in the <code>test1.txt<code> test case 
+file, and output the results into the <code>test1.result.txt</code> file. Once
+you have your result file, you can compare it to <code>test1.expected.txt</code>.
 
 ## Extra Credit Tasks
 
@@ -398,21 +681,54 @@ is used. Also, it should be implemented in a similar fashion to the way the
 other commands are implemented. You will need to add extra methods and
 instance variables to accomplish this.
 
-## Directory Structure and Packages
+## How to Download the Project
 
+On Nike, execute the following terminal command in order to download the project
+files into subdirectory within your present working directory:
 
-## Build System
+```
+$ git clone https://github.com/mepcotterell-cs1302/cs1302-minesweeper-alpha.git
+```
 
-### Compiling
+This should create a directory called <code>cs1302-minesweeper-alpha</code> in
+your present working directory that contains the project files.
 
-### Running
+If any updates to the project files are announced by your instructor, you can
+merge those changes into your copy by changing into your project's directory
+on Nike and issuing the following terminal command:
 
-### Testing
+```
+$ git pull
+```
+
+If you have any problems with any of these procedures, then please contact
+your instructor.
 
 ## Submission Instructions
 
+You will still be submitting your project via Nike. Make sure your project files
+are on <code>nike.cs.uga.edu</code>. Change into the parent directory of your
+project directory and let <code>PROJ_DIR</code> represent the name of your 
+project directory in the instructions provided below. If you've followed the
+instructions provided in this document, then the name of your project directory
+is likely <code>cs1302-minesweeper-alpha</code>. While in your project parent
+directory, execute the following terminal commands in order to submit your 
+project:
 
-## Questions
+```
+$ submit cs1302-minesweeper-alpha cs1302b
+```
+
+It is also a good idea to email a copy to yourself. To do this, simply execute 
+the following command, replacing the email address with your email address:
+
+```
+$ tar zcvf cs1302-minesweeper-alpha.tar.gz cs1302-minesweeper-alpha
+$ mutt -s "[cs1302] cs1302-minesweeper-alpha" -a cs1302-minesweeper-alpha.tar.gz -- your@email.com < /dev/null
+```
+
+If you have any problems submitting your project then please email your
+instructor as soon as possible. However, emailing him about something like this
+the day or night the project is due is probably not the best idea.
 
 
-## Frequently Asked Questions
