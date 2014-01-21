@@ -190,7 +190,7 @@ In a syntax format string, one or more white space is represented as a
 contents of a token are surrounded by <code>""</code> marks, then that token can 
 only take on that literal value. If more than one literal value is accepted for
 a token, then the quoted literals are separated by <code>/</code>. If the
-contents of a token are surrouned by <code>()</code> marks, then that token can
+contents of a token are surrounded by <code>()</code> marks, then that token can
 only take on a value of the type expressed in parentheses.  
 
 Syntax format strings are provided in this document in order to help you, the
@@ -433,7 +433,7 @@ minesweeper-alpha$
 
 After the player correctly entered the command <code>h</code>, the state of
 the game updates (e.g., number of rounds completed, the grid, etc.), the
-help menu is displated, and the next round happens. 
+help menu is displayed, and the next round happens. 
 
 #### Quit Command
 
@@ -468,13 +468,13 @@ Bye!
 ```
 
 After the player correctly entered the command <code>q</code>, the game
-displayed the goodbye message and the program exitted gracefully.
+displayed the goodbye message and the program exited gracefully.
 
 
 #### Player Wins
 
 When the player wins the game, the following message should be displayed
-to the player and the game shold exit gracefully:
+to the player and the game should exit gracefully:
 
 ```
 
@@ -502,7 +502,7 @@ to the player and the game shold exit gracefully:
 ```
 
 Note that the first and last lines are blank and that the beginning of the
-other lines contain a single whitespace. You should replace the score in the
+other lines contain a single white space. You should replace the score in the
 output with the actual calculated score (mentioned above).
 
 #### Displaying Errors
@@ -560,21 +560,21 @@ minesweeper-alpha$
 
 After the player entered the unknown command <code>meh</code>, the state of
 the game updates (e.g., number of rounds completed, the grid, etc.), the
-error message is displated, and the next round happens. 
+error message is displayed, and the next round happens. 
 
 ### Seed Files
 
 This game can also be setup using seed files. Seed files have the following
 format:
 
- * The first line contains two integers (separated by whitespace) indicating the 
+ * The first line contains two integers (separated by white-space) indicating the 
    number of <code>rows</code> and <code>cols</code>, respectively, for the size 
    of the mine board. 
 
  * The second line contains an integer indicating the number of mines to be 
    placed on the mine board.
 
- * Subsequent lines contain pairs of integers (separated by whitespace) 
+ * Subsequent lines contain pairs of integers (separated by white space) 
    indicating the location of each mine.
 
 If the number on line 2 is 5 then there should be 7 lines total in the file.
@@ -593,11 +593,11 @@ Cannot create game with FILENAME, because it is not formatted correctly.
 Note that the second line is empty. Also, be sure to replace FILENAME with 
 the actual name of the file.
 
-A seed file is also considered to be malformatted if the grid size is not an
+A seed file is also considered to be malformed if the grid size is not an
 acceptable grid size, if the number of mines exceeds the number of squares in
 the grid, and if a mine location is specified as being outside of the grid.
 
-An example seedfile is present in the project materials. In order to run
+An example seed file is present in the project materials. In order to run
 your program with the seed file, you should be able to use the following
 command:
 
@@ -613,7 +613,7 @@ please read the following list of tasks carefully:
 
  * Implement or finish implementing the methods in <code>Minesweeper.java</code>
    as per the project description provided above. Be sure to include in-line 
-   Java comments and whitespace where appropriate in order to make your code 
+   Java comments and white space where appropriate in order to make your code 
    both readable and clear.
 
  * Update the @author tag in the JavaDoc comment for the 
@@ -657,12 +657,12 @@ You might find this extra credit command to be useful for debugging.
 Essentially, this command removes, for the next round only, what is often
 referred to as the "fog of war." Squares containing mines, whether unrevealed, 
 marked, or guessed, will be displayed with less-than and greater-than symbols on
-either side of the square's center (as apposed to white spcace). Using the
+either side of the square's center (as apposed to white space). Using the
 <code>nofog</code> command **does** use up a round.
 
 Let's go back to our 10*10 example. Suppose that we secretly know that there is
-a mine in squares (1,1) and (1,3). If the player marked square (1,1) durring the
-first round and then used the <code>nofog</code> command durring the second
+a mine in squares (1,1) and (1,3). If the player marked square (1,1) during the
+first round and then used the <code>nofog</code> command during the second
 round, then here is an example of what that scenario might look like:
 ```
 
@@ -691,7 +691,7 @@ instance variables to accomplish this.
 ## How to Download the Project
 
 On Nike, execute the following terminal command in order to download the project
-files into subdirectory within your present working directory:
+files into sub-directory within your present working directory:
 
 ```
 $ git clone https://github.com/mepcotterell-cs1302/cs1302-minesweeper-alpha.git
@@ -739,3 +739,5 @@ instructor as soon as possible. However, emailing him about something like this
 the day or night the project is due is probably not the best idea.
 
 
+
+ LocalWords:  reveleaed
