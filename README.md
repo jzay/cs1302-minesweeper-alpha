@@ -15,6 +15,11 @@ likely make your copy of the project publicly visible. Please follow the
 instructions contained in the Resources section below in order to do your 
 development on nike.
 
+## Updates
+
+ * (2014-01-23) Added JavaDoc requirement to Project Tasks
+ * (2014-01-23) Added Suggestions Section 
+
 ## Project Description
 
 This first project is meant to ensure that you are able to apply and extend
@@ -96,14 +101,14 @@ The higher the score, the better. Negative scores are possible.
 When the game begins, the following message should be displayed to the player
 once and only once:
 
-``
+```
         _
   /\/\ (_)_ __   ___  _____      _____  ___ _ __   ___ _ __
  /    \| | '_ \ / _ \/ __\ \ /\ / / _ \/ _ \ '_ \ / _ \ '__|
 / /\/\ \ | | | |  __/\__ \\ V  V /  __/  __/ |_) |  __/ |
 \/    \/_|_| |_|\___||___/ \_/\_/ \___|\___| .__/ \___|_|
                                      ALPHA |_| EDITION
-``
+```
 
 Take care when printing this message out to the screen. You will probably need
 to escape some of the characters in order for them to show up correctly.
@@ -616,6 +621,9 @@ please read the following list of tasks carefully:
    Java comments and white space where appropriate in order to make your code 
    both readable and clear.
 
+ * Make sure that all methods are documented using JavaDoc comments, even
+   methods that you create yourself.
+
  * Update the @author tag in the JavaDoc comment for the 
    <code>Minesweeper</code> class in <code>Minesweeper.java</code> to include 
    your name and UGA email address.
@@ -688,6 +696,47 @@ is used. Also, it should be implemented in a similar fashion to the way the
 other commands are implemented. You will need to add extra methods and
 instance variables to accomplish this.
 
+## Suggestions
+
+This project will be a lot easier if you structure your code properly. There is
+not a single correct way to do this, but here are some ideas for support methods 
+that I think will make things easier. These are just suggestions. If you choose
+to use these, then you will need to implement them yourself.
+
+```java
+/**
+ * Returns the number of mines adjacent to the specified
+ * square in the grid. 
+ *
+ * @param row the row index of the square
+ * @param col the column index of the square
+ * @return the number of adjacent mines
+ */
+private int getNumAdjMines(int row, int col) { }
+```
+
+The method above (as well as some other methods) can be implemented a lot more
+easily if you have an easy way to determine if a square is in bounds. Here is
+a suggestion for a method that does just that.
+
+```java
+/**
+ * Indicates whether or not the square is in the game grid.
+ *
+ * @param row the row index of the square
+ * @param col the column index of the square
+ * @return true if the square is in the game grid; false otherwise
+ */
+private boolean isInBounds(int row, int col) { }
+```
+
+Also, it might be easier to use two different arrays (of the same size) in order
+to keep track of the game grid. One of the arrays could be a two-dimensional
+boolean array that indicates mine locations. The other array could be a 
+two-dimensional char or String array that holds the blanks, numbers, and other
+characters for each square. 
+
+
 ## How to Download the Project
 
 On Nike, execute the following terminal command in order to download the project
@@ -739,5 +788,3 @@ instructor as soon as possible. However, emailing him about something like this
 the day or night the project is due is probably not the best idea.
 
 
-
- LocalWords:  reveleaed
