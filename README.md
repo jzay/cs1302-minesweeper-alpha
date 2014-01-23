@@ -20,6 +20,10 @@ development on nike.
  * (2014-01-23) Added JavaDoc requirement to Project Tasks
  * (2014-01-23) Added Suggestions Section 
 
+If you have already cloned the project to Nike, then you can update your
+copy of the project using the <code>$ git pull</code> command while inside
+of your project directory.
+
 ## Project Description
 
 This first project is meant to ensure that you are able to apply and extend
