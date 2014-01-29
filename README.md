@@ -17,6 +17,10 @@ development on nike.
 
 ## Updates
 
+ * (2014-01-29) The number of random mines to be placed on the grid is supposed
+   to be 10% of the grid's area, rounded up to the next integer. 
+ * (2014-01-29) Added information about what to do when the number of
+   rows and columns is out of bounds to the displaying errors section
  * (2014-01-23) Added JavaDoc requirement to Project Tasks
  * (2014-01-23) Added Suggestions Section 
 
@@ -515,6 +519,17 @@ other lines contain a single white space. You should replace the score in the
 output with the actual calculated score (mentioned above).
 
 #### Displaying Errors
+
+In the constructor, if the number of rows and columns is not in proper bounds, 
+then the following message should be displayed and the program should exit
+gracefully:
+
+```
+
+ಠ_ಠ says, "Cannot create a mine field with that many rows and/or columns!"
+```
+
+Note that the first line is blank.
 
 If a command is not recognized, then the following message should be displayed 
 to the player and one round should be consumed:
