@@ -72,6 +72,8 @@ public class Minesweeper {
 	  statements.
 	*/
 
+	Minesweeper game = null;
+
 	switch (args.length) {
 
         // random game
@@ -81,14 +83,10 @@ public class Minesweeper {
 
 	    // try to parse the arguments and create a game
 	    try {
-
 		rows = Integer.parseInt(args[0]);
 		cols = Integer.parseInt(args[1]);
-
-		Minesweeper game = new Minesweeper(rows, cols);
-		game.run();
+		game = new Minesweeper(rows, cols);
 		break;
-
 	    } catch (NumberFormatException nfe) { 
 		// line intentionally left blank
 	    } // try
@@ -100,8 +98,7 @@ public class Minesweeper {
 	    File file = new File(filename);
 
 	    if (file.isFile()) {
-		Minesweeper game = new Minesweeper(file);
-		game.run();
+		game = new Minesweeper(file);
 		break;
 	    } // if
     
@@ -113,6 +110,9 @@ public class Minesweeper {
 	    System.exit(0);
 
 	} // switch
+
+	// if all is good, then run the game
+	game.run();
 
     } // main
 
