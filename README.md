@@ -17,6 +17,9 @@ development on nike.
 
 ## Updates
 
+ * (2014-01-29) Updated <code>Minesweeper.java</code> so that exceptions thrown
+   in the <code>main</code> method do not cause the usage message to be
+   displayed.
  * (2014-01-29) The number of random mines to be placed on the grid is supposed
    to be 10% of the grid's area, rounded up to the next integer. 
  * (2014-01-29) Added information about what to do when the number of
