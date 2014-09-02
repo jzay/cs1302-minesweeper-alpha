@@ -1,6 +1,8 @@
 
 # CSCI 1302 - Minesweeper Alpha Project
 
+**DUE Tuesday 2014-09-16 @ 9:30 AM**
+
 This repository contains the skeleton code for the Minesweeper Alpha project
 assigned to the students in Michael E. Cotterell's Fall 2014 CSCI 1302 class
 at the University of Georgia. Please read the entirety of this file before
