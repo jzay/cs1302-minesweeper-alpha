@@ -2,7 +2,7 @@
 # CSCI 1302 - Minesweeper Alpha Project
 
 This repository contains the skeleton code for the Minesweeper Alpha project
-assigned to the students in Michael E. Cotterell's Spring 2014 CSCI 1302 class
+assigned to the students in Michael E. Cotterell's Fall 2014 CSCI 1302 class
 at the University of Georgia. Please read the entirety of this file before
 beginning your project. 
 
@@ -17,19 +17,11 @@ development on nike.
 
 ## Updates
 
- * (2014-01-29) Updated <code>Minesweeper.java</code> so that exceptions thrown
-   in the <code>main</code> method do not cause the usage message to be
-   displayed.
- * (2014-01-29) The number of random mines to be placed on the grid is supposed
-   to be 10% of the grid's area, rounded up to the next integer. 
- * (2014-01-29) Added information about what to do when the number of
-   rows and columns is out of bounds to the displaying errors section
- * (2014-01-23) Added JavaDoc requirement to Project Tasks
- * (2014-01-23) Added Suggestions Section 
+Updates will be posted here.
 
-If you have already cloned the project to Nike, then you can update your
-copy of the project using the <code>$ git pull</code> command while inside
-of your project directory.
+If there has been an update and you have already cloned the project to Nike, 
+then you can update your copy of the project using the <code>$ git pull</code>
+command while inside of your project directory.
 
 ## Project Description
 
@@ -51,7 +43,7 @@ add a GUI to it later as well. Interestingly, the organization of some of the
 classes in this project will also introduce you to some elementary aspects of
 game programming.
 
-This project must be implemented in Java 7, and it must compile and run 
+This project must be implemented in Java 7 or 8, and it must compile and run 
 correctly on Nike using instructions that you will provide in an
 <code>INSTRUCTIONS.md</code> file (more on that later).
 
