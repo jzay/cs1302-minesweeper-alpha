@@ -1,7 +1,7 @@
 
 # CSCI 1302 - Minesweeper Alpha Project
 
-**DUE Monday 2015-02-03 (Feb 3rd) @ 11:55 PM**
+**DUE Tuesday 2015-02-03 (Feb 3rd) @ 11:55 PM**
 
 This repository contains the skeleton code for the Minesweeper Alpha project
 assigned to the students in Michael E. Cotterell's Spring 2015 CSCI 1302 class
