@@ -1,10 +1,10 @@
 
 # CSCI 1302 - Minesweeper Alpha Project
 
-**DUE Tuesday 2015-02-03 (Feb 3rd) @ 11:55 PM**
+**DUE Sunday 2016-01-31 (Jan 31st) @ 11:59 PM**
 
 This repository contains the skeleton code for the Minesweeper Alpha project
-assigned to the students in Michael E. Cotterell's Spring 2015 CSCI 1302 class
+assigned to the students in the Spring 2016 CSCI 1302 classes
 at the University of Georgia. Please read the entirety of this file before
 beginning your project. 
 
@@ -784,12 +784,19 @@ project directory and let <code>PROJ_DIR</code> represent the name of your
 project directory in the instructions provided below. If you've followed the
 instructions provided in this document, then the name of your project directory
 is likely <code>cs1302-minesweeper-alpha</code>. While in your project parent
-directory, execute the following terminal commands in order to submit your 
-project:
+directory, execute the following command, depending on which section you are in:
 
-```
-$ submit cs1302-minesweeper-alpha cs1302b
-```
+### CRN 26245
+
+    $ submit cs1302-minesweeper-alpha cs1302a
+
+### CRN 26311
+
+    $ submit cs1302-minesweeper-alpha cs1302b
+
+### CRN 36424
+
+    $ submit cs1302-minesweeper-alpha cs1302c
 
 It is also a good idea to email a copy to yourself. To do this, simply execute 
 the following command, replacing the email address with your email address:
