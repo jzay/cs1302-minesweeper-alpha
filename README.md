@@ -5,8 +5,10 @@
 
 This repository contains the skeleton code for the Minesweeper Alpha project
 assigned to the students in the Spring 2016 CSCI 1302 classes
-at the University of Georgia. Please read the entirety of this file before
-beginning your project. 
+at the University of Georgia. 
+
+**Please read the entirety of this file before
+beginning your project.** 
 
 ## Academic Honesty
 
